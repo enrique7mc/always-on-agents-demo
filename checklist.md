@@ -4,7 +4,8 @@
 
 - [ ] Paste title, short/full description, and format into the actual form fields
 - [ ] Add your preferred public speaker profile and contact details
-- [ ] Create the GitHub repo and replace placeholder links in `submission.md`
+- [x] Create the GitHub repo and replace placeholder links in `submission.md`
+- [ ] Use the same identity in the speaker profile and on GitHub (`enrique7mc`)
 - [ ] Confirm whether the organizers expect 5 or 10 minutes and whether Q&A is included
 
 ## Host and sessions
@@ -19,6 +20,8 @@
 
 - [ ] Rehearse Moshi SSH login and Herdr session navigation
 - [ ] Rehearse notifications and approval interactions on phone/watch
+- [ ] Confirm the demo task triggers exactly one `PermissionRequest`
+- [ ] Run `herdr integration status` and confirm moshi-hook is paired
 - [ ] Test the preview with the exact network path and phone connection to be used on stage
 - [ ] Verify a reliable mobile connection independent of venue Wi-Fi
 

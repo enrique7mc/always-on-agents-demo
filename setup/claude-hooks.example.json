@@ -1,0 +1,36 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          { "type": "command", "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session", "timeout": 10 }
+        ]
+      },
+      { "hooks": [ { "type": "command", "command": "moshi-hook claude-hook", "async": true } ] }
+    ],
+    "UserPromptSubmit": [
+      { "hooks": [ { "type": "command", "command": "moshi-hook claude-hook", "async": true } ] }
+    ],
+    "PermissionRequest": [
+      { "hooks": [ { "type": "command", "command": "moshi-hook claude-hook", "async": false } ] }
+    ],
+    "Notification": [
+      { "matcher": "permission_prompt", "hooks": [ { "type": "command", "command": "moshi-hook claude-hook", "async": true } ] }
+    ],
+    "PreToolUse": [
+      { "matcher": "AskUserQuestion", "hooks": [ { "type": "command", "command": "moshi-hook claude-hook", "async": true } ] },
+      { "matcher": "ExitPlanMode", "hooks": [ { "type": "command", "command": "moshi-hook claude-hook", "async": true } ] }
+    ],
+    "PostToolUse": [
+      { "matcher": "AskUserQuestion", "hooks": [ { "type": "command", "command": "moshi-hook claude-hook", "async": true } ] },
+      { "matcher": "ExitPlanMode", "hooks": [ { "type": "command", "command": "moshi-hook claude-hook", "async": true } ] }
+    ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "moshi-hook claude-hook", "async": true } ] }
+    ],
+    "SessionEnd": [
+      { "hooks": [ { "type": "command", "command": "moshi-hook claude-hook", "async": true } ] }
+    ]
+  }
+}

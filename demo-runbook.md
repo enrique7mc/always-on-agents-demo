@@ -18,13 +18,23 @@ Host: Mac mini. Network: Tailscale. Shell: SSH. Session layer: Herdr. Agent: Cla
 
 Explain briefly why you moved beyond many SSH windows and experimented with tmux and Herdr. Mention that the CLI approach can accommodate multiple agents; do not turn this into a product comparison.
 
-## 1:30–2:45 — Start with Claude Code on MacBook
+## 1:30–2:15 — Show the wiring
 
-Use a preconfigured test repo. Ask Claude Code to make a visible, bounded change (for example, update a small UI component), then verify the work is running on the host. Show that a second session or agent could run in parallel if already configured.
+Open [`setup/claude-hooks.example.json`](setup/claude-hooks.example.json). Point to three things:
 
-## 2:45–4:15 — Disconnect and resume on iPhone
+- `PermissionRequest` → `moshi-hook` with `"async": false`: Claude Code waits for the phone's answer.
+- `AskUserQuestion`, `ExitPlanMode`, `Stop` → push notifications.
+- `SessionStart` → the Herdr hook that maps the agent session to its pane.
 
-Disconnect the laptop client while leaving the agent and host running. Open Moshi on iPhone, navigate to the same Herdr session, review progress, and respond to an agent notification or approval prompt if available.
+Say: "The agent's own events decide when my phone buzzes. I don't watch terminals."
+
+## 2:15–3:00 — Start with Claude Code on MacBook
+
+Use a preconfigured test repo. Ask Claude Code to make a visible, bounded change (for example, update a small UI component). Use a task that needs one command outside the allow list, so it raises a permission request. Verify the work runs on the host. Show that a second session or agent could run in parallel if already configured.
+
+## 3:00–4:15 — Disconnect and resume on iPhone
+
+Disconnect the laptop client while leaving the agent and host running. When the permission request arrives, approve it from the notification. Then tap a notification to open the same Herdr session in Moshi and review progress.
 
 ## 4:15–5:15 — See the result
 
@@ -33,7 +43,7 @@ Use mobile access to inspect the running dev-server preview or another visible r
 ## 5:15–6:00 — What carries over and what doesn't
 
 - Portable: shell, agents, processes, code, session management, most web dev previews.
-- Agent/client-dependent: notification and approval integrations.
+- Agent/client-dependent: hook events are part of Claude Code; actionable phone approvals depend on Moshi.
 - Mac-specific: iOS Simulator and some Apple development tooling.
 
 Close: "The key idea isn't SSH from a phone. It's making the development environment persistent and letting your devices come and go."

@@ -1,0 +1,11 @@
+# ~/.config/moshi/config.toml (non-secret gateway settings only).
+# Pairing credentials live in secrets.json and host.json next to this file.
+# Never commit those.
+
+[gateway]
+always_on_discovery = true
+suppress_nested_agent_push = false
+suppress_push_while_unlocked = false
+# Push only for agents that run inside a multiplexer (Herdr or tmux).
+suppress_push_without_mux = true
+usage_collection = true
