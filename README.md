@@ -22,12 +22,6 @@ I use **Claude Code** for the live demonstration, but the workflow also supports
 
 Full install steps and config: [`setup/`](setup/README.md).
 
-## Architecture
-
-![Architecture of the always-on agent stack: MacBook and iPhone connect to persistent Herdr sessions on a Mac mini or Linux VPS over SSH through Tailscale. Claude Code hooks send Moshi notifications to iPhone and Apple Watch and return approval decisions to the waiting agent.](docs/images/architecture.png)
-
-The host keeps agent sessions, the project workspace, and development servers running when clients disconnect. Terminal access uses SSH over Tailscale; the Claude Code demo uses a separate Moshi hook path for notifications and approval decisions.
-
 ## How a session gets your attention
 
 1. Claude Code runs inside a Herdr pane on the host.
